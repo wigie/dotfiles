@@ -1,6 +1,6 @@
 ;;; Craig Wiegert's customization file for Emacs
 ;;;
-;;; Time-stamp: "2014-09-21 23:53:47 wigie@lookout.home.net"
+;;; Time-stamp: "2016-06-01 23:08:41 wigie@lookout.home.net"
 
 ;;; Abbreviations in code:
 ;;;  abbrev mode
@@ -22,6 +22,10 @@
 
 ;; Add personal elisp directory to the path
 (add-to-list 'load-path "~/.emacs.d/elisp")
+
+;; Package setup
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 ;; Graphical vs. terminal setup
 (if window-system
@@ -196,11 +200,14 @@
 
 ;; Customized variables and faces
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
+ '(custom-safe-themes
+   (quote
+    ("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default)))
  '(font-latex-fontify-script nil)
  '(font-latex-fontify-sectioning (quote color))
  '(font-latex-script-display (quote ((height (+ 1) height (- 1)))))
@@ -208,12 +215,13 @@
  '(indicate-buffer-boundaries t)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
- '(safe-local-variable-values (quote ((TeX-master . t)))))
+ '(safe-local-variable-values (quote ((TeX-master . t))))
+ '(yas-global-mode t nil (yasnippet)))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "bitstream" :family "Bitstream Vera Sans Mono"))))
  '(bold-italic ((t (:slant oblique :weight bold))))
  '(font-lock-string-face ((((class color) (min-colors 88) (background light)) (:foreground "sienna"))))
