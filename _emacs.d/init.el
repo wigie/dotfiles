@@ -1,13 +1,7 @@
 ;;; Craig Wiegert's customization file for Emacs
 ;;;
-;;; Time-stamp: "2016-06-01 23:08:41 wigie@lookout.home.net"
+;;; Time-stamp: "2016-06-06 23:06:05 wigie@lookout.home.net"
 
-;;; Abbreviations in code:
-;;;  abbrev mode
-;;;  skeleton
-;;;  tempo
-;;;  dabbrev?
-;;;  snippets
 ;;;
 ;;; Tab completion
 ;;;
@@ -20,12 +14,25 @@
 ;;;
 ;;; Should really remove BBDB; it annoys me now.
 
-;; Add personal elisp directory to the path
-(add-to-list 'load-path "~/.emacs.d/elisp")
+;;; TODO:
+;;; * Enhanced completion
+;;; * Popups?
+;;; * Setup code modes
+;;; * Theming
+;;; * Split inits out of main file
+;;; * Column highlighting
+;;; * Semantic whitespace highlight (in e.g. python-mode)
+
+
+;; Personal settings path
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
 ;; Package setup
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+;; delete elpa/archives/melpa/archive-contents if
+;; "wrong type argument: arrayp, nil" error appears on startup
 
 ;; Graphical vs. terminal setup
 (if window-system
@@ -197,6 +204,9 @@
 (load "my-misc")
 ;(load "my-crypt")
 
+;; Setup packages
+(require 'init-yasnippet)
+
 
 ;; Customized variables and faces
 (custom-set-variables
@@ -207,7 +217,7 @@
  '(blink-cursor-mode nil)
  '(custom-safe-themes
    (quote
-    ("7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default)))
+    ("9d08af845e2761d07c9312629a31c126fb29b6f570f974d3c283a8146fb9e284" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "7ceb8967b229c1ba102378d3e2c5fef20ec96a41f615b454e0dc0bfa1d326ea6" default)))
  '(font-latex-fontify-script nil)
  '(font-latex-fontify-sectioning (quote color))
  '(font-latex-script-display (quote ((height (+ 1) height (- 1)))))
@@ -215,8 +225,7 @@
  '(indicate-buffer-boundaries t)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
- '(safe-local-variable-values (quote ((TeX-master . t))))
- '(yas-global-mode t nil (yasnippet)))
+ '(safe-local-variable-values (quote ((TeX-master . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

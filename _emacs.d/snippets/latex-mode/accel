@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# Shortcut for acceleration units
+# name: accel
+# key: accel
+# --
+\units{m/s$^2$}
