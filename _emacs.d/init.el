@@ -1,6 +1,6 @@
 ;;; Craig Wiegert's customization file for Emacs
 ;;;
-;;; Time-stamp: "2016-06-06 23:34:37 wigie@lookout.home.net"
+;;; Time-stamp: "2018-09-09 21:33:41 wigie@lookout.home.net"
 
 ;;;
 ;;; Tab completion
@@ -22,7 +22,7 @@
 ;;; * Split inits out of main file
 ;;; * Column highlighting: fill-column-mode vs column-marker
 ;;; * Whitespace/indentation highlight (in e.g. python-mode)
-;;; * Updated modeline
+;;; * Updated modeline; also diminish
 ;;; * More useful fringe?
 ;;; * Setup variables based on what platform we're on and window system
 
@@ -32,7 +32,8 @@
 
 ;; Package setup
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 ;; delete elpa/archives/melpa/archive-contents if
 ;; "wrong type argument: arrayp, nil" error appears on startup
@@ -158,7 +159,10 @@
 (condition-case nil (require 'tex-site) (error nil))
 (cond ((featurep 'tex-site)
        (setq-default TeX-master nil)
-       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)))
+       (setq-default TeX-PDF-mode t)
+       (setq-default font-latex-fontify-script nil)
+       (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+       (add-hook 'LaTeX-mode-hook 'flyspell-mode)))
 
 ;; MH mail
 ;(global-set-key "\C-xm" 'mh-rmail)	; normally bound to smail
