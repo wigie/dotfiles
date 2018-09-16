@@ -1,6 +1,6 @@
 ;;; Craig Wiegert's customization file for Emacs
 ;;;
-;;; Time-stamp: "2018-09-09 21:33:41 wigie@lookout.home.net"
+;;; Time-stamp: "2018-09-16 14:13:43 wigie@lookout.home.net"
 
 ;;;
 ;;; Tab completion
@@ -202,20 +202,17 @@
 ;		bbdb-always-add-addresses 'never)
 ;  (add-hook 'mh-folder-mode-hook 'bbdb-insinuate-mh))
 
-;; Calendar/Diary
-(setq calendar-latitude 33.9047
-	  calendar-longitude -83.3265
-	  calendar-location-name "Athens, GA")
-
 ;; Load other functions
 (load "my-misc")
 ;(load "my-crypt")
 
 ;; Setup packages
+(require 'init-modeline)
 (require 'init-yasnippet)
+(require 'init-calendar)
+(require 'init-spelling)
 
 ;; Keep emacs Customize settings separate
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
-
+;(when (file-exists-p custom-file)
+;  (load custom-file))
